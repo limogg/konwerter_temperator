@@ -1,0 +1,138 @@
+#include <iostream>
+
+using namespace std;
+
+double temperatura;
+char f1 = 'f';
+char c1 = 'c';
+char k1 = 'k';
+
+char f2 = 'f';
+char c2 = 'c';
+char k2 = 'k';
+
+char przelicznik1;
+char przelicznik2;
+
+double celciuszNaKelwin;
+double celciuszNaFahrenheit;
+
+double kelvinNaCelciusz;
+double kelvinNaFahrenheit;
+
+double fahrenheitNaCelciusz;
+double fahrenheitNaKelvin;
+
+
+double Input()
+{
+    cout<<"Podaj temperaturę którą chcesz przekonwertować"<<endl;
+    cin>>temperatura;
+    
+    return temperatura;
+    
+}
+
+double CelciuszNaKelwin()
+{
+    temperatura = temperatura + 273.15;
+    return temperatura;
+}
+
+double CelciuszNaFahrenheit()
+{
+    temperatura = (temperatura * 1.8) + 32;
+    return temperatura;
+}
+
+double KelvinNaCelciusz()
+{
+    temperatura = temperatura - 273.15;
+    return temperatura;
+}
+
+double KelvinNaFahrenheit()
+{
+    temperatura = (temperatura - 273.15) * 9/5 + 32;
+    return temperatura;
+}
+
+double FahrenheitNaCelciusz()
+{
+    temperatura = (temperatura - 32) * 5/9;
+    return temperatura;
+}
+
+double FahrenheitNaKelvin()
+{
+    temperatura = (temperatura - 32) * 5/9 + 273.15;
+    return temperatura;
+}
+
+void Przelicznik()
+{
+    cout<<"W jakich stopniach podajesz temperature? Dla Celciusza wpisz c, dla Kelvina wpisz k, a dla Fahrenheita wpisz f."<<endl;
+    cin>> przelicznik1;
+    
+    cout<<"Na jaką temperaturę chcesz przekonwertować? Dla Celciusza wpisz c, dla Kelvina wpisz k, a dla Fahrenheita wpisz f."<<endl;
+    cin>>przelicznik2;
+    
+    if (przelicznik1 == f1)
+    {
+        if(przelicznik2 == c2)
+        {
+            FahrenheitNaCelciusz();
+        }
+        else if(przelicznik2 == k2)
+        {
+            FahrenheitNaKelvin();
+        }
+        else
+        {
+            cout<<"Podałeś złą literę. Spróbój ponownie z poprawnymi danymi :)"<<endl;
+        }
+    }
+    else if(przelicznik1 == c1)
+    {
+        if(przelicznik2 == f2)
+        {
+            CelciuszNaFahrenheit();
+        }
+        else if(przelicznik2 == k2)
+        {
+            CelciuszNaKelwin();
+        }
+        else
+        {
+            cout<<"Podałeś złą literę. Spróbój ponownie z poprawnymi danymi :)"<<endl;
+        }
+    }
+    else if(przelicznik1 == k1)
+    {
+        if(przelicznik2 == c2)
+        {
+            KelvinNaCelciusz();
+        }
+        else if(przelicznik2 == f2)
+        {
+            KelvinNaFahrenheit();
+        }
+        else
+        {
+            cout<<"Podałeś złą literę. Spróbój ponownie z poprawnymi danymi :)"<<endl;
+        }
+    }
+    
+    else
+    {
+        cout<<"Podałeś złą literę. Spróbój ponownie z poprawnymi danymi :)"<<endl;
+    }
+    
+}
+
+int main()
+{
+    Input();
+    Przelicznik();
+    cout<<temperatura<<endl;
+}
